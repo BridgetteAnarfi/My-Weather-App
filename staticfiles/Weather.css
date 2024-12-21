@@ -1,0 +1,98 @@
+body {
+    font-family: 'Lobster';
+    background-color: #FFD700; /* Vibrant yellow */
+    margin: 10px;
+    padding: 10px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    background-color: #FFA500; /* Vibrant orange */
+    color: #FFF;
+    padding: 10px;
+    text-align: center;
+    font-size: 24px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.weather-card {
+    background-color: #FFCC33; /* Soft yellow-orange */
+    border: 1px solid #FFA500; /* Orange border */
+    border-radius: 5px;
+    padding: 15px;
+    margin: 15px 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.weather-card h2 {
+    font-size: 20px;
+    color: #333;
+}
+
+.weather-card .temp {
+    font-size: 36px;
+    font-weight: bold;
+    color: #FF4500; /* Vibrant orange-red */
+}
+
+.weather-card .details {
+    font-size: 14px;
+    color: #333;
+}
+
+.weather-card .icon {
+    width: 50px;
+    height: 50px;
+}
+
+.button {
+    display: inline-block;
+    background-color: #FFA500; /* Orange */
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #FFD700; /* Yellow on hover */
+}
+
+.forecast-section {
+    margin-top: 20px;
+    background-color: #FFA500; /* Vibrant orange */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.forecast-section h3 {
+    font-size: 18px;
+    color: #FFF;
+}
+
+.forecast-section .forecast-day {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+.forecast-section .forecast-day h4 {
+    font-size: 16px;
+    color: #FFF;
+}
+
+.forecast-section .forecast-day .temp-range {
+    font-size: 14px;
+    color: #FFF;
+}

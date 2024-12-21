@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bridgette's Weather Forecast</title>
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" type="text/css" href="{% static 'Weather.css' %}">
+    <!-- Link to Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;  /* Ensures video doesn't create scroll bars */
+            position: relative;  /* Necessary for the background layers */
+        }
+
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;  /* Places video behind content */
+            object-fit: cover;  /* Ensures video covers entire background */
+        }
+
+        .content {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 80%;
+            max-width: 600px;
+            z-index: 1;  /* Ensures container is above video */
+        }
+
+        .header {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .weather-card p {
+            font-size: 1em;
+            margin: 10px 0;
+        }
+
+        .weather-card img {
+            width: 100px;
+            height: 100px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="video-background">
+    {% if temperature < 0 %}
+        <video autoplay loop muted>
+            <source src="https://cdn.pixabay.com/video/2021/01/31/63661-506816266_tiny.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    {% elif temperature >= 0 and temperature < 10 %}
+        <video autoplay loop muted>
+            <source src="https://cdn.pixabay.com/video/2020/01/12/31175-384523301_tiny.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    {% elif temperature >= 10 and temperature < 20 %}
+        <video autoplay loop muted>
+            <source src="https://cdn.pixabay.com/video/2024/06/04/215347_tiny.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    {% elif temperature >= 20 and temperature < 30 %}
+        <video autoplay loop muted>
+            <source src="https://cdn.pixabay.com/video/2021/11/26/98992-650523459_tiny.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    {% else %}
+        <video autoplay loop muted>
+            <source src="https://cdn.pixabay.com/video/2022/05/10/116626-708909726_tiny.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    {% endif %}
+</div>
+
+<div class="content">
+    <!-- Header Section -->
+    <header class="header">
+        <h1>{{ city }}</h1>
+    </header>
+
+    <!-- Weather Details Section -->
+    {% if temperature %}
+    <div class="weather-card">
+        <p>Temperature: {{ temperature }}°C</p>
+        <p>Humidity: {{ humidity }}%</p>
+        <p>Wind Speed: {{ wind_speed }} m/s</p>
+        <p>Condition: {{ weather_condition }}</p>
+
+        <!-- Display animated image based on temperature range -->
+        {% if temperature < 0 %}
+            <img src="https://cdn-icons-gif.flaticon.com/17484/17484878.gif" alt="Snowflake">
+        {% elif temperature >= 0 and temperature < 10 %}
+            <img src="https://cdn-icons-gif.flaticon.com/6455/6455060.gif" alt="Cold">
+        {% elif temperature >= 10 and temperature < 20 %}
+            <img src="https://cdn-icons-gif.flaticon.com/8793/8793355.gif" alt="Cool">
+        {% elif temperature >= 20 and temperature < 30 %}
+            <img src="https://cdn-icons-gif.flaticon.com/15968/15968674.gif" alt="Warm">
+        {% else %}
+            <img src="https://cdn-icons-gif.flaticon.com/11260/11260418.gif" alt="Hot">
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
